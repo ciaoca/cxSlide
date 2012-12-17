@@ -1,5 +1,5 @@
-jQuery cxSlide ½¹µãÍ¼ÂÖ»»
+jQuery cxSlide ç„¦ç‚¹å›¾è½®æ¢
 
-°æ±¾£º
+ç‰ˆæœ¬ï¼š
 + jQuery v1.4.4+
 + jQuery cxSlide v1.0
