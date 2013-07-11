@@ -4,8 +4,8 @@
 支持单图和多元素的大模块展示。
 
 **版本：**
-+ jQuery v1.4.4+
-+ jQuery cxSlide v1.0
+* jQuery v1.4.4+
+* jQuery cxSlide v1.0
 
 **注意事项：**
 
