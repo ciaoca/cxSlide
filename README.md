@@ -70,9 +70,9 @@
     </tr>
 </table>
 
-##使用方法
+##【使用方法】
 
-CSS 样式结构
+###CSS 样式结构
 ```css
 /* 焦点图样式 */ 
 .cxslide{}
@@ -90,7 +90,7 @@ CSS 样式结构
 .cxslide .plus{}
 ```
 
-DOM 结构
+###DOM 结构
 ```html
 <!-- 焦点图 --> 
 <div id="element_id" class="cxslide">
@@ -116,7 +116,7 @@ DOM 结构
 </div>
 ```
 
-调用方式 cxSlide
+###调用方式 cxSlide
 ```javascript
 // 直接调用
 $("#element_id").cxSlide();
