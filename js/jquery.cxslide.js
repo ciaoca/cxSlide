@@ -1,8 +1,10 @@
 /*!
- * cxColor 1.0
- * date: 2012-12-12
+ * cxSlide 1.0
+ * http://code.ciaoca.com/
  * https://github.com/ciaoca/cxSlide
- * (c) 2012 Ciaoca, http://ciaoca.com/
+ * E-mail: ciaoca@gmail.com
+ * Released under the MIT license
+ * Date: 2012-12-27
  */
 (function($){
 	$.fn.cxSlide=function(settings){
