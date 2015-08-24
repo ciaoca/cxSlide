@@ -1,11 +1,12 @@
 #jQuery cxSlide
 
-一款基于jQuery的焦点图轮换插件，可自定义外观及调用参数，兼容主流浏览器。
-支持单图和多元素的大模块展示。
+cxSlide 是一个简单易用的焦点图展示插件，支持水平、纵向切换，透明过渡切换。
+
+已支持 CSS 动画过渡切换。通过 CSS 动画切换，可以展示更多效果。参考<a target="_blank" href="http://code.ciaoca.com/jquery/cxslide/demo/anime.html">动画 Demo</a>
 
 **版本：**
 * jQuery v1.7.2+
-* jQuery cxSlide v1.1
+* jQuery cxSlide v2.0
 
 **注意事项：**
 
@@ -19,21 +20,33 @@
 ##【使用方法】
 
 ###CSS 样式结构
+除必要属性设置外，其他样式均可自行设置。
 ```css
-/* 焦点图样式 */ 
-.cxslide{}
+/**
+ * cxSlide 基本样式
+ * width 和 height 根据需求设置
+ */
+.cxslide{position:relative;width:600px;height:280px;}
 .cxslide .box{}
 .cxslide .list{}
 .cxslide .list li{}
-
-/* 数字切换按钮样式 */
 .cxslide .btn{}
 .cxslide .btn li{}
-.cxslide .btn .selected{}
-
-/* 左右切换按钮样式 */
+.cxslide .btn li.selected{}
 .cxslide .minus{}
 .cxslide .plus{}
+
+/* 横向过渡 type: 'x' */
+.cxslide .box{overflow:hidden;width:600px;height:280px;}
+.cxslide .list{overflow:hidden;width:9999px;}
+.cxslide .list li{float:left;position:relative;width:600px;}
+
+/* 纵向过渡 type: 'y' */
+.cxslide .box{overflow:hidden;width:600px;height:280px;}
+.cxslide .list{overflow:hidden;height:9999px;}
+
+/* 透明过渡 type: 'fade' */
+.cxslide .box{overflow:hidden;position:relative;width:600px;height:280px;}
 ```
 
 ###DOM 结构
@@ -62,7 +75,7 @@
 </div>
 ```
 
-###调用方式 cxSlide
+###调用方式
 ```javascript
 // 直接调用
 $("#element_id").cxSlide();
@@ -80,6 +93,11 @@ $("#element_id").cxSlide({
 });
 ```
 
+###动画切换
+画面进入时 ```<li>``` 添加 ```class="in"```
+画面离开时 ```<li>``` 添加 ```class="out"```
+可参考<a target="_blank" href="http://code.ciaoca.com/jquery/cxslide/demo/anime.html">动画 Demo</a>
+
 ##【options 参数说明】
 <table>
     <tr>
@@ -95,7 +113,7 @@ $("#element_id").cxSlide({
     <tr>
         <td>type</td>
         <td>"x"</td>
-        <td>过渡效果。可设置为："x"|"y"|"fade"|"toggle"</td>
+        <td>过渡效果。可设置为："x", "y", "fade", "toggle", "anime"</td>
     </tr>
     <tr>
         <td>start</td>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>cxSlide 焦点图轮换 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/animate.min.css">
+</head>
+<body>
+<h1>jQuery cxSlide 焦点图轮换</h1>
+
+<div class="wrap">
+  <h2>CSS 动画</h2>
+  <div id="cxslide_anime" class="cxslide_anime">
+    <div class="box">
+      <ul class="list">
+        <li>
+          <h2></h2>
+          <h3>高端网站设计师</h3>
+          <p>我们专注于品牌化高端网站的设计与建设 致力于解决企业在互联网和手机移动端的统一性呈现<br>以及企业产品的网络互动应用</p>
+          <div class="tag">
+            <em>Strategy</em>
+            <em>Creativity</em>
+            <em>Technology</em>
+          </div>
+        </li>
+        <li>
+          <h3>让传播无处不在</h3>
+          <p>从PC端到移动端的全面构建，打通桌上与掌上的企业品牌树立</p>
+          <div class="mac"></div>
+          <div class="pad"></div>
+          <div class="phone"></div>
+        </li>
+        <li>
+          <h3>有设计·有创意</h3>
+          <p>黑马以设计和创意成为诸多一流企业的高端网络服务商</p>
+          <div class="case"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>文档</h2>
+  <ul>
+    <li><a target="_blank" href="https://github.com/ciaoca/cxScroll">Github</a></li>
+    <li><a target="_blank" href="http://code.ciaoca.com/jquery/cxscroll/">中文文档</a></li>
+  </ul>
+  
+  <h2>作者</h2>
+  <p><a target="_blank" href="http://ciaoca.com/">http://ciaoca.com/</a></p>
+  <p>Released under the MIT license</p>
+</div>
+
+<script src="http://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/jquery.cxslide.min.js"></script>
+<script>
+$('#cxslide_anime').cxSlide({
+  type: 'anime',
+  plus: false,
+  minus: false
+});
+</script>
+</body>
+</html>
