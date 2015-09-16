@@ -78,18 +78,19 @@ cxSlide 是一个简单易用的焦点图展示插件，支持水平、纵向切
 ###调用方式
 ```javascript
 // 直接调用
-$("#element_id").cxSlide();
+$('#element_id').cxSlide();
 
 // 自定义参数调用
-$("#element_id").cxSlide({
-    events:"click",
-    type:"x",
-    speed:800,
-    time:5000,
-    auto:true,
-    btn:true,
-    plus:false,
-    minus:false
+$('#element_id').cxSlide({
+    events: 'click',
+    type: 'x',
+    speed: 800,
+    time: 5000,
+    auto: true,
+    hoverLock: true,
+    btn: true,
+    plus: false,
+    minus: false
 });
 ```
 
