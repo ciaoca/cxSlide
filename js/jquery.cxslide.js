@@ -1,10 +1,10 @@
 /*!
- * cxSlide 2.0
+ * cxSlide 2.0.1
  * http://code.ciaoca.com/
  * https://github.com/ciaoca/cxSlide
  * E-mail: ciaoca@gmail.com
  * Released under the MIT license
- * Date: 2015-08-24
+ * Date: 2015-09-08
  */
 (function(factory){
   if (typeof define === 'function' && define.amd) {
@@ -122,12 +122,14 @@
       };
 
       // 事件：鼠标移入停止，移除开始
-      self.dom.box.on('mouseenter', function(){
-        self.stop();
-      });
-      self.dom.box.on('mouseleave', function(){
-        self.play();
-      });
+      if (self.settings.hoverLock) {
+        self.dom.box.on('mouseenter', function(){
+          self.stop();
+        });
+        self.dom.box.on('mouseleave', function(){
+          self.play();
+        });
+      };
 
       // 事件：序号按钮
       if(self.settings.btn){
@@ -292,6 +294,7 @@
     speed: 800,       // 切换速度
     time: 5000,       // 自动轮换间隔时间
     auto: true,       // 是否自动轮播
+    hoverLock: true,  // 鼠标移入移出锁定
     btn: true,        // 是否使用数字按钮
     plus: false,      // 是否使用 plus 按钮
     minus: false      // 是否使用 minus 按钮
