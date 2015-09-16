@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>cxSlide 焦点图轮换 &raquo; 在线演示 - 前端开发仓库</title>
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/animate.min.css">
+</head>
+<body>
+<h1>jQuery cxSlide 焦点图轮换</h1>
+
+<div class="wrap">
+  <h2>常见焦点图展示</h2>
+  <div id="cxslide_x" class="cxslide_x">
+    <div class="box">
+      <ul class="list">
+        <li><a href="#1"><img src="img/_pic/slide_1.jpg" width="600" height="280"></a><p>焦点图说明文字 111</p></li>
+        <li><a href="#2"><img src="img/_pic/slide_2.jpg" width="600" height="280"></a><p>焦点图说明文字 222</p></li>
+        <li><a href="#3"><img src="img/_pic/slide_3.jpg" width="600" height="280"></a><p>焦点图说明文字 333</p></li>
+        <li><a href="#4"><img src="img/_pic/slide_4.jpg" width="600" height="280"></a><p>焦点图说明文字 444</p></li>
+        <li><a href="#5"><img src="img/_pic/slide_5.jpg" width="600" height="280"></a><p>焦点图说明文字 555</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="acts">
+    <div>
+      <a href="javascript://" rel="play">开始自动播放</a>
+      <a href="javascript://" rel="stop">停止自动播放</a>
+      <a href="javascript://" rel="prev">上一张</a>
+      <a href="javascript://" rel="next">下一张</a>
+    </div>
+    <div>
+      <a href="javascript://" rel="goto" rev="0">跳转到第 1 张</a>
+      <a href="javascript://" rel="goto" rev="1">第 2 张</a>
+      <a href="javascript://" rel="goto" rev="2">第 3 张</a>
+      <a href="javascript://" rel="goto" rev="3">第 4 张</a>
+      <a href="javascript://" rel="goto" rev="4">第 5 张</a>
+    </div>
+  </div>
+
+  <h2>文档</h2>
+  <ul>
+    <li><a target="_blank" href="https://github.com/ciaoca/cxScroll">Github</a></li>
+    <li><a target="_blank" href="http://code.ciaoca.com/jquery/cxscroll/">中文文档</a></li>
+  </ul>
+  
+  <h2>作者</h2>
+  <p><a target="_blank" href="http://ciaoca.com/">http://ciaoca.com/</a></p>
+  <p>Released under the MIT license</p>
+</div>
+
+<script src="http://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/jquery.cxslide.min.js"></script>
+<script>
+(function(){
+  var acts = $('#acts');
+  var cxSlideApi;
+
+  $('#cxslide_x').cxSlide({
+    auto: false,
+    plus: true,
+    minus: true
+  }, function(api){
+    cxSlideApi = api;
+  });
+
+  acts.on('click', 'a', function(){
+    var _rel = this.rel;
+    var _rev = this.rev;
+
+    switch (_rel) {
+      case 'play':
+        cxSlideApi.play();
+        break;
+
+      case 'stop':
+        cxSlideApi.stop();
+        break;
+
+      case 'goto':
+        cxSlideApi.goto(_rev);
+        break;
+
+      case 'prev':
+        cxSlideApi.prev();
+        break;
+
+      case 'next':
+        cxSlideApi.next();
+        break;
+    };
+
+  });
+})();
+</script>
+</body>
+</html>

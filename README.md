@@ -5,8 +5,8 @@ cxSlide 是一个简单易用的焦点图展示插件，支持水平、纵向切
 已支持 CSS 动画过渡切换。通过 CSS 动画切换，可以展示更多效果。参考<a target="_blank" href="http://code.ciaoca.com/jquery/cxslide/demo/anime.html">动画 Demo</a>
 
 **版本：**
-* jQuery v1.7.2+
-* jQuery cxSlide v2.0
+* jQuery v1.7+
+* jQuery cxSlide v2.0.1
 
 **注意事项：**
 
@@ -17,7 +17,7 @@ cxSlide 是一个简单易用的焦点图展示插件，支持水平、纵向切
 
 示例：http://code.ciaoca.com/jquery/cxslide/demo/
 
-##【使用方法】
+##使用方法
 
 ###CSS 样式结构
 除必要属性设置外，其他样式均可自行设置。
@@ -98,7 +98,7 @@ $("#element_id").cxSlide({
 画面离开时 ```<li>``` 添加 ```class="out"```
 可参考<a target="_blank" href="http://code.ciaoca.com/jquery/cxslide/demo/anime.html">动画 Demo</a>
 
-##【options 参数说明】
+##options 参数说明
 <table>
     <tr>
         <th width="80">名称</th>
@@ -135,6 +135,11 @@ $("#element_id").cxSlide({
         <td>true</td>
         <td>是否自动轮播</td>
     </tr>
+  <tr>
+    <td>hoverLock</td>
+    <td>true</td>
+    <td>鼠标移入移出锁定。鼠标进入区域内时停止自动轮播，离开后恢复自动轮播（仅在 auto 为 true 时有效）</td>
+  </tr>
     <tr>
         <td>btn</td>
         <td>true</td>
@@ -152,7 +157,7 @@ $("#element_id").cxSlide({
     </tr>
 </table>
 
-##【API 接口】
+##API 接口
 <table>
     <tr>
         <th width="80">名称</th>
