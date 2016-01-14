@@ -1,10 +1,10 @@
 /*!
- * cxSlide 2.0.1
+ * cxSlide 2.0.2
  * http://code.ciaoca.com/
  * https://github.com/ciaoca/cxSlide
  * E-mail: ciaoca@gmail.com
  * Released under the MIT license
- * Date: 2015-09-08
+ * Date: 2016-01-14
  */
 (function(factory){
   if (typeof define === 'function' && define.amd) {
@@ -14,48 +14,46 @@
   };
 }(function($){
   $.cxSlide = function(){
-    var obj;
-    var settings;
-    var callback;
-    var slide = {
+    var cxSlide = {
       dom: {},
       api: {}
     };
 
-    // 检测是否为 DOM 元素
-    var isElement = function(o){
-      if(o && (typeof HTMLElement === 'function' || typeof HTMLElement === 'object') && o instanceof HTMLElement) {
-        return true;
-      } else {
-        return (o && o.nodeType && o.nodeType === 1) ? true : false;
-      };
-    };
-
-    // 检测是否为 jQuery 对象
-    var isJquery = function(o){
-      return (o && o.length && (typeof jQuery === 'function' || typeof jQuery === 'object') && o instanceof jQuery) ? true : false;
-    };
-
-    // 分配参数
-    for (var i = 0, l = arguments.length; i < l; i++) {
-      if (isJquery(arguments[i])) {
-        obj = arguments[i];
-      } else if (isElement(arguments[i])) {
-        obj = $(arguments[i]);
-      } else if (typeof arguments[i] === 'function') {
-        callback = arguments[i];
-      } else if (typeof arguments[i] === 'object') {
-        settings = arguments[i];
-      };
-    };
-
-    if (!obj.length) {return};
-
-    slide.init = function(){
+    cxSlide.init = function(){
       var self = this;
+      var _settings;
+      var _callback;
 
-      self.dom.el = obj;
-      self.settings = $.extend({}, $.cxSlide.defaults, settings);
+      // 检测是否为 DOM 元素
+      var _isElement = function(o){
+        if(o && (typeof HTMLElement === 'function' || typeof HTMLElement === 'object') && o instanceof HTMLElement) {
+          return true;
+        } else {
+          return (o && o.nodeType && o.nodeType === 1) ? true : false;
+        };
+      };
+
+      // 检测是否为 jQuery 对象
+      var _isJquery = function(o){
+        return (o && o.length && (typeof jQuery === 'function' || typeof jQuery === 'object') && o instanceof jQuery) ? true : false;
+      };
+
+      // 分配参数
+      for (var i = 0, l = arguments.length; i < l; i++) {
+        if (_isJquery(arguments[i])) {
+          self.dom.el = arguments[i];
+        } else if (_isElement(arguments[i])) {
+          self.dom.el = $(arguments[i]);
+        } else if (typeof arguments[i] === 'function') {
+          _callback = arguments[i];
+        } else if (typeof arguments[i] === 'object') {
+          _settings = arguments[i];
+        };
+      };
+
+      if (!self.dom.el.length) {return};
+
+      self.settings = $.extend({}, $.cxSlide.defaults, _settings);
 
       self.build();
 
@@ -79,12 +77,12 @@
         }
       };
 
-      if (typeof callback === 'function') {
-        callback(self.api);
+      if (typeof _callback === 'function') {
+        _callback(self.api);
       };
     };
 
-    slide.build = function(){
+    cxSlide.build = function(){
       var self = this;
       var _html;
 
@@ -92,6 +90,7 @@
       self.dom.list = self.dom.box.find('.list');
       self.dom.items = self.dom.list.find('li');
       self.itemSum = self.dom.items.length;
+      self.baseClass = self.dom.el.attr('class');
 
       if (self.itemSum <= 1) {return};
 
@@ -154,7 +153,7 @@
     };
 
     // 方法：开始
-    slide.play = function(){
+    cxSlide.play = function(){
       var self = this;
 
       if (!self.settings.auto) {return};
@@ -166,14 +165,14 @@
     };
 
     // 方法：停止
-    slide.stop = function(){
+    cxSlide.stop = function(){
       if (typeof(this.run) !== 'undefined') {
         clearTimeout(this.run);
       };
     };
 
     // 方法：轮换过程
-    slide.goto = function(n){
+    cxSlide.goto = function(n){
       var self = this;
       var _next = typeof(n) === 'undefined' ? self.now + 1 : parseInt(n, 10);
       var _now = self.now;
@@ -191,6 +190,7 @@
       };
 
       self.stop();
+      self.dom.el.attr('class', self.baseClass + ' to_' + _next);
 
       if (_now === _next) {
         self.dom.numBtns.eq(_next).addClass('in selected');
@@ -206,7 +206,7 @@
         // CSS 动画
         // 在此之前已经处理完 anime 的 class，且其他类型也可集合动画使用，此处目前无须特别处理
         // case 'anime':
-          // break;
+          // break
 
         // 透明过渡
         case 'fade':
@@ -224,12 +224,12 @@
           self.dom.items.eq(_next).css({
             'zIndex': 2
           }).fadeIn(self.settings.speed);
-          break;
+          break
 
         // 直接切换
         case 'toggle':
           self.dom.items.hide().eq(_next).show();
-          break;
+          break
 
         // 水平滚动
         case 'x':
@@ -251,7 +251,7 @@
           self.dom.box.stop(true, false).animate({
             'scrollLeft': _moveVal
           }, self.settings.speed);
-          break;
+          break
 
         // 垂直滚动
         case 'y':
@@ -273,7 +273,9 @@
           self.dom.box.stop(true, false).animate({
             'scrollTop': _moveVal
           }, self.settings.speed);
-          break;
+          break
+
+        // not default
       };
 
       self.now = _next;
@@ -283,7 +285,9 @@
       });
     };
     
-    slide.init();
+    cxSlide.init.apply(cxSlide, arguments);
+
+    return this;
   };
   
   // 默认值
