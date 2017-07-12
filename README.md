@@ -13,9 +13,9 @@ cxSlide 是一个简单易用的焦点图展示插件，支持水平、纵向切
 1. 内部会自动创建切换按钮元素，也可在外部直接创建，若外部已创建，内部将跳过此步骤；
 2. 展示图片未超过1张时，会隐藏切换按钮元素。
 
-文档：http://code.ciaoca.com/jquery/cxslide/
+文档：http://code.ciaoca.com/jquery/cxSlide/
 
-示例：http://code.ciaoca.com/jquery/cxslide/demo/
+示例：http://code.ciaoca.com/jquery/cxSlide/demo/
 
 ## 使用方法
 
